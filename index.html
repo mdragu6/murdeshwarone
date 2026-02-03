@@ -156,6 +156,13 @@ button{
 <script>
 /* 🔴 PASTE YOUR GOOGLE SHEET ID HERE */
 const SHEET_ID = "1NfFwlfVukVQoujYuz7GkbK92FMYa1nQVYLOvjgr8qMw";
+const workers = document.getElementById("workers");
+const rooms = document.getElementById("rooms");
+const food = document.getElementById("food");
+const transport = document.getElementById("transport");
+const noResults = document.getElementById("noResults");
+const searchInput = document.getElementById("searchInput");
+
 
 /* CARD TEMPLATE */
 function card(title,status,details,phone){
@@ -185,30 +192,39 @@ function loadSheet(sheet, render){
 }
 
 /* LOAD ALL */
-loadSheet("workers",data=>{
-  workers.innerHTML+=data.map(w=>
-    card(`${w.emoji} ${w.name}`,w.status,
-    `${w.type} • ${w.location} • ⏱ ${w.time}`,w.phone)
-  ).join("");
+loadSheet("workers", data => {
+  workers.innerHTML =
+    "<h2>Workers</h2>" +
+    data.map(w =>
+      card(`${w.emoji} ${w.name}`, w.status,
+      `${w.type} • ${w.location} • ⏱ ${w.time}`, w.phone)
+    ).join("");
 });
 
-loadSheet("rooms",data=>{
-  rooms.innerHTML+=data.map(r=>
-    card(`🏨 ${r.name}`,r.price,r.details,r.phone)
-  ).join("");
+loadSheet("rooms", data => {
+  rooms.innerHTML =
+    "<h2>Rooms</h2>" +
+    data.map(r =>
+      card(`🏨 ${r.name}`, r.price, r.details, r.phone)
+    ).join("");
 });
 
-loadSheet("food",data=>{
-  food.innerHTML+=data.map(f=>
-    card(`🍽 ${f.name}`,f.rating,f.details,f.phone)
-  ).join("");
+loadSheet("food", data => {
+  food.innerHTML =
+    "<h2>Food</h2>" +
+    data.map(f =>
+      card(`🍽 ${f.name}`, f.rating, f.details, f.phone)
+    ).join("");
 });
 
-loadSheet("transport",data=>{
-  transport.innerHTML+=data.map(t=>
-    card(`🚕 ${t.name}`,t.status,t.details,t.phone)
-  ).join("");
+loadSheet("transport", data => {
+  transport.innerHTML =
+    "<h2>Transport</h2>" +
+    data.map(t =>
+      card(`🚕 ${t.name}`, t.status, t.details, t.phone)
+    ).join("");
 });
+
 
 /* CATEGORY SWITCH */
 function show(id,el){
