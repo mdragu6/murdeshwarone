@@ -1,182 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MurdeshwarOne</title>
-
-<meta name="description" content="MurdeshwarOne – Local workers, rooms, food & transport in Murdeshwar">
-<meta name="theme-color" content="#0A4A78">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --primary: #0A4A78;
-  --bg: #F1F5F9;
-  --card: #ffffff;
-  --text: #0F172A;
-  --muted: #64748B;
-  --success: #16A34A;
-  --danger: #DC2626;
+:root{
+  --primary:#0A4A78;
+  --bg:#F1F5F9;
+  --card:#fff;
+  --text:#0F172A;
+  --muted:#64748B;
+  --success:#16A34A;
 }
 
-* { box-sizing: border-box; }
+*{box-sizing:border-box}
 
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  padding-bottom: 100px;
+body{
+  margin:0;
+  font-family:Inter;
+  background:var(--bg);
+  padding-bottom:100px;
 }
 
 /* HEADER */
-header {
-  background: linear-gradient(135deg, #083A5A, #0A4A78);
-  color: white;
-  padding: 1rem 1.2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-header h1 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.2rem;
-  margin: 0;
+header{
+  background:linear-gradient(135deg,#083A5A,#0A4A78);
+  color:#fff;
+  padding:1rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
 /* SEARCH */
-.search {
-  padding: 1rem;
-  background: white;
+.search{
+  background:#fff;
+  padding:1rem;
 }
-
-.search input {
-  width: 100%;
-  padding: 0.9rem 1rem;
-  border-radius: 14px;
-  border: none;
-  font-size: 1rem;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-  outline: none;
+.search input{
+  width:100%;
+  padding:1rem;
+  border:none;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,.12);
+  outline:none;
 }
 
 /* CATEGORIES */
-.categories {
-  display: flex;
-  gap: 0.8rem;
-  padding: 1rem;
-  overflow-x: auto;
+.categories{
+  display:flex;
+  gap:.7rem;
+  padding:1rem;
+  overflow-x:auto;
 }
-
-.cat {
-  background: var(--card);
-  padding: 0.7rem 1rem;
-  border-radius: 999px;
-  font-weight: 600;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-  cursor: pointer;
-  white-space: nowrap;
+.cat{
+  padding:.6rem 1rem;
+  border-radius:999px;
+  background:#fff;
+  font-weight:600;
+  cursor:pointer;
+  white-space:nowrap;
 }
-
-.cat.active {
-  background: var(--primary);
-  color: white;
+.cat.active{
+  background:var(--primary);
+  color:#fff;
 }
 
 /* SECTION */
-.section {
-  padding: 1rem;
+.section{
+  padding:1rem;
 }
-
-.section h2 {
-  font-family: 'Poppins', sans-serif;
+.section h2{
+  font-family:Poppins;
 }
 
 /* CARD */
-.card {
-  background: var(--card);
-  border-radius: 18px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+.card{
+  background:#fff;
+  border-radius:18px;
+  padding:1rem;
+  margin-bottom:1rem;
+  box-shadow:0 10px 24px rgba(0,0,0,.1);
+}
+.card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.status{
+  font-weight:600;
+  font-size:.85rem;
+  color:var(--success);
+}
+.card-details{
+  color:var(--muted);
+  margin:.4rem 0;
+}
+.actions{
+  display:flex;
+  gap:.5rem;
+}
+button{
+  flex:1;
+  padding:.6rem;
+  border:none;
+  border-radius:12px;
+  font-weight:600;
+  cursor:pointer;
+}
+.call{
+  background:linear-gradient(135deg,#16A34A,#22C55E);
+  color:#fff;
+}
+.wa{
+  background:#E2E8F0;
 }
 
-.card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card-title {
-  font-weight: 600;
-}
-
-.status {
-  font-weight: 600;
-  font-size: 0.85rem;
-  color: var(--success);
-}
-
-.status.danger {
-  color: var(--danger);
-}
-
-.card-details {
-  font-size: 0.9rem;
-  color: var(--muted);
-  margin: 0.4rem 0;
-}
-
-.card-actions {
-  display: flex;
-  gap: 0.6rem;
-}
-
-.btn {
-  flex: 1;
-  padding: 0.6rem;
-  border-radius: 12px;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.call {
-  background: linear-gradient(135deg, #16A34A, #22C55E);
-  color: white;
-}
-
-.map {
-  background: #E2E8F0;
-}
-
-/* NO RESULTS */
-#noResults {
-  display: none;
-  text-align: center;
-  color: var(--muted);
-  margin-top: 2rem;
-}
-
-/* EMERGENCY */
-.emergency {
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-  background: linear-gradient(135deg, #DC2626, #B91C1C);
-  color: white;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.4rem;
-  box-shadow: 0 18px 40px rgba(220,38,38,0.45);
-  cursor: pointer;
+#noResults{
+  text-align:center;
+  color:#64748B;
+  display:none;
 }
 </style>
 </head>
@@ -184,118 +131,107 @@ header h1 {
 <body>
 
 <header>
-  <h1>MurdeshwarOne</h1>
+  <h2>MurdeshwarOne</h2>
   <div>📍 Murdeshwar</div>
 </header>
 
 <div class="search">
-  <input type="text" id="searchInput" placeholder="Search workers, rooms, food..." />
+  <input id="searchInput" placeholder="Search workers, rooms, food...">
 </div>
 
 <div class="categories">
-  <div class="cat active" onclick="showSection('workersSection', this)">👨‍🔧 Workers</div>
-  <div class="cat" onclick="showSection('roomsSection', this)">🏨 Rooms</div>
-  <div class="cat" onclick="showSection('foodSection', this)">🍽 Food</div>
-  <div class="cat" onclick="showSection('transportSection', this)">🚕 Transport</div>
+  <div class="cat active" onclick="show('workers',this)">👨‍🔧 Workers</div>
+  <div class="cat" onclick="show('rooms',this)">🏨 Rooms</div>
+  <div class="cat" onclick="show('food',this)">🍽 Food</div>
+  <div class="cat" onclick="show('transport',this)">🚕 Transport</div>
 </div>
 
-<div class="section" id="workersSection">
-  <h2>Available Workers</h2>
-  <div id="workersList"></div>
-</div>
-
-<div class="section" id="roomsSection" style="display:none;">
-  <h2>Available Rooms</h2>
-  <div id="roomsList"></div>
-</div>
-
-<div class="section" id="foodSection" style="display:none;">
-  <h2>Food & Restaurants</h2>
-  <div id="foodList"></div>
-</div>
-
-<div class="section" id="transportSection" style="display:none;">
-  <h2>Transport Services</h2>
-  <div id="transportList"></div>
-</div>
+<div class="section" id="workers"><h2>Workers</h2></div>
+<div class="section" id="rooms" style="display:none"><h2>Rooms</h2></div>
+<div class="section" id="food" style="display:none"><h2>Food</h2></div>
+<div class="section" id="transport" style="display:none"><h2>Transport</h2></div>
 
 <p id="noResults">No results found</p>
 
-<div class="emergency" onclick="alert('Police: 100 | Ambulance: 108')">🚨</div>
-
 <script>
-function showSection(id, el) {
-  document.querySelectorAll(".section").forEach(s => s.style.display = "none");
-  document.getElementById(id).style.display = "block";
+/* 🔴 PASTE YOUR GOOGLE SHEET ID HERE */
+const SHEET_ID = "1NfFwlfVukVQoujYuz7GkbK92FMYa1nQVYLOvjgr8qMw";
 
-  document.querySelectorAll(".cat").forEach(c => c.classList.remove("active"));
-  el.classList.add("active");
-
-  document.getElementById("searchInput").value = "";
-  document.getElementById("noResults").style.display = "none";
-
-  document.querySelectorAll(".card").forEach(c => c.style.display = "block");
-}
-
-document.getElementById("searchInput").addEventListener("keyup", function () {
-  filterCards(this.value.toLowerCase());
-});
-
-function filterCards(val) {
-  const visibleSection = document.querySelector(".section:not([style*='display: none'])");
-  const cards = visibleSection.querySelectorAll(".card");
-
-  let found = false;
-
-  cards.forEach(c => {
-    const match = c.innerText.toLowerCase().includes(val);
-    c.style.display = match ? "block" : "none";
-    if (match) found = true;
-  });
-
-  document.getElementById("noResults").style.display = found ? "none" : "block";
-}
-
-fetch("data.json")
-  .then(res => res.json())
-  .then(data => {
-    load(data.workers, "workersList", w =>
-      card(`${w.emoji} ${w.name}`, w.status, `${w.type} • ${w.location} • ⏱ ${w.time}`, w.phone)
-    );
-    load(data.rooms, "roomsList", r =>
-      card(`🏨 ${r.name}`, r.price, r.details, r.phone)
-    );
-    load(data.food, "foodList", f =>
-      card(`🍽 ${f.name}`, f.rating, f.details, f.phone)
-    );
-    load(data.transport, "transportList", t =>
-      card(`🚕 ${t.name}`, t.status, t.details, t.phone)
-    );
-  });
-
-function load(arr, id, cb) {
-  const el = document.getElementById(id);
-  el.innerHTML = "";
-  arr.forEach(i => el.innerHTML += cb(i));
-}
-
-function card(title, status, details, phone) {
-  const danger = status.toLowerCase().includes("busy") ? "danger" : "";
+/* CARD TEMPLATE */
+function card(title,status,details,phone){
   return `
   <div class="card">
     <div class="card-top">
-      <div class="card-title">${title}</div>
-      <div class="status ${danger}">${status}</div>
+      <b>${title}</b>
+      <span class="status">${status}</span>
     </div>
     <div class="card-details">${details}</div>
-    <div class="card-actions">
-      <a href="tel:${phone}"><button class="btn call">📞 Call</button></a>
+    <div class="actions">
+      <a href="tel:${phone}">
+        <button class="call">📞 Call</button>
+      </a>
       <a href="https://wa.me/91${phone}" target="_blank">
-        <button class="btn map">💬 WhatsApp</button>
+        <button class="wa">💬 WhatsApp</button>
       </a>
     </div>
   </div>`;
 }
+
+/* LOAD DATA FROM SHEET */
+function loadSheet(sheet, render){
+  fetch(`https://opensheet.elk.sh/${SHEET_ID}/${sheet}`)
+    .then(res=>res.json())
+    .then(render);
+}
+
+/* LOAD ALL */
+loadSheet("workers",data=>{
+  workers.innerHTML+=data.map(w=>
+    card(`${w.emoji} ${w.name}`,w.status,
+    `${w.type} • ${w.location} • ⏱ ${w.time}`,w.phone)
+  ).join("");
+});
+
+loadSheet("rooms",data=>{
+  rooms.innerHTML+=data.map(r=>
+    card(`🏨 ${r.name}`,r.price,r.details,r.phone)
+  ).join("");
+});
+
+loadSheet("food",data=>{
+  food.innerHTML+=data.map(f=>
+    card(`🍽 ${f.name}`,f.rating,f.details,f.phone)
+  ).join("");
+});
+
+loadSheet("transport",data=>{
+  transport.innerHTML+=data.map(t=>
+    card(`🚕 ${t.name}`,t.status,t.details,t.phone)
+  ).join("");
+});
+
+/* CATEGORY SWITCH */
+function show(id,el){
+  document.querySelectorAll(".section").forEach(s=>s.style.display="none");
+  document.getElementById(id).style.display="block";
+  document.querySelectorAll(".cat").forEach(c=>c.classList.remove("active"));
+  el.classList.add("active");
+  noResults.style.display="none";
+  searchInput.value="";
+}
+
+/* SEARCH */
+searchInput.onkeyup=()=>{
+  const val=searchInput.value.toLowerCase();
+  const cards=document.querySelectorAll(".section:not([style*='none']) .card");
+  let found=false;
+  cards.forEach(c=>{
+    const m=c.innerText.toLowerCase().includes(val);
+    c.style.display=m?"block":"none";
+    if(m)found=true;
+  });
+  noResults.style.display=found?"none":"block";
+};
 </script>
 
 </body>
