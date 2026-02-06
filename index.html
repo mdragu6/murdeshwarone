@@ -46,7 +46,7 @@ header{background:#0A4A78;color:#fff;padding:1rem;display:flex;justify-content:s
 
 <script>
 const SHEET_ID="1NfFwlfVukVQoujYuz7GkbK92FMYa1nQVYLOvjgr8qMw";
-const SCRIPT_URL="PASTE_SCRIPT_URL";
+const SCRIPT_URL="https://script.google.com/macros/s/AKfycbwXc3b27Qy3C5CVJm52RJlGrJIVkGRW86qMCUnMTTbNuhj9wdiLzMNGW2nRw9dlNYrP/exec";
 
 function track(event,name,category){
 fetch(SCRIPT_URL,{method:"POST",body:JSON.stringify({event,name,category})});
