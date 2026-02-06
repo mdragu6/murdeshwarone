@@ -2,71 +2,92 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin Analytics</title>
+<title>Admin Dashboard</title>
 <style>
 body{font-family:Arial;background:#F1F5F9;padding:20px}
 .card{background:#fff;padding:15px;border-radius:12px;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
 </style>
 </head>
 <body>
 
 <div id="login">
 <h2>Admin Login</h2>
-<input id="pass" type="password" placeholder="Enter password">
+<input id="pass" type="password" placeholder="Password">
 <button onclick="check()">Login</button>
 </div>
 
 <div id="dashboard" style="display:none">
+
+<h2>Overview</h2>
+<div class="grid">
+<div class="card">Workers: <b id="workersCount">0</b></div>
+<div class="card">Visits: <b id="visitCount">0</b></div>
+<div class="card">Calls: <b id="callCount">0</b></div>
+<div class="card">WhatsApp: <b id="waCount">0</b></div>
+</div>
+
 <h2>Listing Analytics</h2>
 <div id="analytics"></div>
+
 </div>
 
 <script>
-/* CHANGE PASSWORD HERE */
-const ADMIN_PASSWORD="murdeshwar123";
-
-function check(){
-  const p=document.getElementById("pass").value;
-
-  if(p===ADMIN_PASSWORD){
-    document.getElementById("login").style.display="none";
-    document.getElementById("dashboard").style.display="block";
-    loadAnalytics();
-  }else{
-    alert("Wrong password");
-  }
-}
-
+const PASSWORD="murdeshwar123";
 const SHEET_ID="1NfFwlfVukVQoujYuz7GkbK92FMYa1nQVYLOvjgr8qMw";
 
-function loadAnalytics(){
+function check(){
+if(document.getElementById("pass").value===PASSWORD){
+document.getElementById("login").style.display="none";
+document.getElementById("dashboard").style.display="block";
+loadDashboard();
+}else alert("Wrong password");
+}
+
+function loadDashboard(){
+
+/* WORKERS COUNT */
+fetch(`https://opensheet.elk.sh/${SHEET_ID}/workers`)
+.then(r=>r.json())
+.then(d=>{
+document.getElementById("workersCount").innerText=d.length;
+});
+
+/* ANALYTICS */
 fetch(`https://opensheet.elk.sh/${SHEET_ID}/analytics`)
 .then(res=>res.json())
 .then(data=>{
 
-  const stats={};
+let visit=0,call=0,wa=0;
+const stats={};
 
-  data.forEach(e=>{
-    const name=e.name;
+data.forEach(e=>{
+if(e.event==="visit") visit++;
+if(e.event==="call") call++;
+if(e.event==="whatsapp") wa++;
 
-    if(!stats[name]){
-      stats[name]={view:0,call:0,whatsapp:0};
-    }
+const name=e.name;
+if(!stats[name]) stats[name]={view:0,call:0,whatsapp:0};
 
-    if(e.event==="view") stats[name].view++;
-    if(e.event==="call") stats[name].call++;
-    if(e.event==="whatsapp") stats[name].whatsapp++;
-  });
+if(e.event==="view") stats[name].view++;
+if(e.event==="call") stats[name].call++;
+if(e.event==="whatsapp") stats[name].whatsapp++;
+});
 
-  document.getElementById("analytics").innerHTML=
-    Object.keys(stats).map(name=>`
-      <div class="card">
-        <b>${name}</b><br>
-        Views: ${stats[name].view}<br>
-        Calls: ${stats[name].call}<br>
-        WhatsApp: ${stats[name].whatsapp}
-      </div>
-    `).join("");
+document.getElementById("visitCount").innerText=visit;
+document.getElementById("callCount").innerText=call;
+document.getElementById("waCount").innerText=wa;
+
+document.getElementById("analytics").innerHTML=
+Object.keys(stats).map(name=>`
+<div class="card">
+<b>${name}</b><br>
+Views: ${stats[name].view}<br>
+Calls: ${stats[name].call}<br>
+WhatsApp: ${stats[name].whatsapp}
+</div>
+`).join("");
+
 });
 }
 </script>
