@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+<style>
+body{font-family:Arial;background:#F1F5F9;padding:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.card{background:#fff;padding:20px;border-radius:12px}
+.num{font-size:26px;font-weight:bold;color:#0A4A78}
+</style>
+</head>
+<body>
+
+<h2>Admin Analytics</h2>
+
+<div class="grid">
+<div class="card">Workers<div class="num" id="workers"></div></div>
+<div class="card">Rooms<div class="num" id="rooms"></div></div>
+<div class="card">Food<div class="num" id="food"></div></div>
+<div class="card">Transport<div class="num" id="transport"></div></div>
+<div class="card">Services<div class="num" id="services"></div></div>
+<div class="card">Visits<div class="num" id="visits"></div></div>
+<div class="card">Calls<div class="num" id="calls"></div></div>
+<div class="card">WhatsApp<div class="num" id="wa"></div></div>
+</div>
+
+<script>
+const SHEET_ID="1NfFwlfVukVQoujYuz7GkbK92FMYa1nQVYLOvjgr8qMw";
+
+function count(sheet,id){
+fetch(`https://opensheet.elk.sh/${SHEET_ID}/${sheet}`)
+.then(r=>r.json())
+.then(d=>{
+document.getElementById(id).innerText=d.length;
+});
+}
+
+count("workers","workers");
+count("rooms","rooms");
+count("food","food");
+count("transport","transport");
+count("services","services");
+
+fetch(`https://opensheet.elk.sh/${SHEET_ID}/analytics`)
+.then(r=>r.json())
+.then(d=>{
+document.getElementById("visits").innerText =
+d.filter(x=>x.event==="visit").length;
+
+document.getElementById("calls").innerText =
+d.filter(x=>x.event==="call").length;
+
+document.getElementById("wa").innerText =
+d.filter(x=>x.event==="whatsapp").length;
+});
+</script>
+
+</body>
+</html>
