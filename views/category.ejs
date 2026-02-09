@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= category %> - MurdeshwarOne</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="/" class="logo">🕉️ MurdeshwarOne</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/add-service">Add Service</a></li>
+                <li><a href="/admin/login" class="btn-admin">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem;"><%= category %></h1>
+        
+        <div class="services-grid">
+            <% services.forEach(service => { %>
+                <div class="service-card">
+                    <span class="service-category"><%= service.category %></span>
+                    <h3><%= service.name %></h3>
+                    <p><%= service.description %></p>
+                    <div class="service-contact">
+                        <span>📞</span>
+                        <span><%= service.contact %></span>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+        
+        <% if(services.length === 0) { %>
+            <div style="text-align: center; padding: 3rem;">
+                <p style="font-size: 1.2rem; color: #6b7280; margin-bottom: 1rem;">No services found in this category yet.</p>
+                <a href="/add-service" class="btn-primary">Be the First to Add</a>
+            </div>
+        <% } %>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="/" class="btn-primary" style="background-color: #6b7280;">Back to Home</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 MurdeshwarOne. Your trusted local service and tourism platform.</p>
+    </footer>
+</body>
+</html>

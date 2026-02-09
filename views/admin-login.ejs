@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - MurdeshwarOne</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="/" class="logo">🕉️ MurdeshwarOne</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/add-service">Add Service</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="login-container">
+        <div class="login-box">
+            <h2>Admin Login</h2>
+            
+            <% if(error) { %>
+                <div class="error-message"><%= error %></div>
+            <% } %>
+            
+            <form action="/admin/login" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <button type="submit" class="btn-submit">Login</button>
+            </form>
+            
+            <p style="text-align: center; margin-top: 1rem; color: #6b7280; font-size: 0.9rem;">
+                Default: username: <strong>admin</strong>, password: <strong>admin123</strong>
+            </p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 MurdeshwarOne. Your trusted local service and tourism platform.</p>
+    </footer>
+</body>
+</html>

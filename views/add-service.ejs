@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Service - MurdeshwarOne</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="/" class="logo">🕉️ MurdeshwarOne</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/add-service">Add Service</a></li>
+                <li><a href="/admin/login" class="btn-admin">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">Add Your Service</h1>
+        <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;">Submit your service details. It will be visible after admin approval.</p>
+        
+        <div class="form-container">
+            <form action="/add-service" method="POST">
+                <div class="form-group">
+                    <label for="name">Service/Business Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="e.g., Shiva Electricals">
+                </div>
+                
+                <div class="form-group">
+                    <label for="category">Category *</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select a category</option>
+                        <% categories.forEach(cat => { %>
+                            <option value="<%= cat %>"><%= cat %></option>
+                        <% }) %>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Description *</label>
+                    <textarea id="description" name="description" required placeholder="Describe your service..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact">Contact Number *</label>
+                    <input type="tel" id="contact" name="contact" required placeholder="+91 9876543210">
+                </div>
+                
+                <button type="submit" class="btn-submit">Submit Service</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 MurdeshwarOne. Your trusted local service and tourism platform.</p>
+    </footer>
+</body>
+</html>

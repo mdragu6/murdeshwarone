@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MurdeshwarOne - Local Services & Tourist Guide</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="/" class="logo">🕉️ MurdeshwarOne</a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/add-service">Add Service</a></li>
+                <li><a href="/admin/login" class="btn-admin">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome to MurdeshwarOne</h1>
+        <p>Your Complete Guide to Local Services & Tourism in Murdeshwar</p>
+        <a href="/add-service" class="btn-primary">Add Your Service</a>
+    </section>
+
+    <div class="container">
+        <section class="categories-section">
+            <h2>Browse Services by Category</h2>
+            <div class="categories-grid">
+                <% categories.forEach(category => { %>
+                    <a href="/services/<%= category %>" class="category-card">
+                        <div class="category-icon">
+                            <% if(category === 'Electrician') { %>⚡
+                            <% } else if(category === 'Plumber') { %>🔧
+                            <% } else if(category === 'Carpenter') { %>🪚
+                            <% } else if(category === 'Painter') { %>🎨
+                            <% } else if(category === 'Hotel') { %>🏨
+                            <% } else if(category === 'Room Rental') { %>🏠
+                            <% } else if(category === 'Restaurant') { %>🍽️
+                            <% } else if(category === 'Tour Guide') { %>🗺️
+                            <% } else if(category === 'Transport') { %>🚗
+                            <% } else if(category === 'Auto Repair') { %>🔨
+                            <% } else if(category === 'Medical Services') { %>⚕️
+                            <% } else if(category === 'Grocery Store') { %>🛒
+                            <% } else { %>📋
+                            <% } %>
+                        </div>
+                        <h3><%= category %></h3>
+                    </a>
+                <% }) %>
+            </div>
+        </section>
+
+        <section>
+            <h2 style="text-align: center; font-size: 2.2rem; margin-bottom: 2rem;">Featured Services</h2>
+            <div class="services-grid">
+                <% services.slice(0, 6).forEach(service => { %>
+                    <div class="service-card">
+                        <span class="service-category"><%= service.category %></span>
+                        <h3><%= service.name %></h3>
+                        <p><%= service.description %></p>
+                        <div class="service-contact">
+                            <span>📞</span>
+                            <span><%= service.contact %></span>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+            
+            <% if(services.length === 0) { %>
+                <p style="text-align: center; color: #6b7280; padding: 2rem;">No services available yet. Be the first to add one!</p>
+            <% } %>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 MurdeshwarOne. Your trusted local service and tourism platform.</p>
+    </footer>
+</body>
+</html>
